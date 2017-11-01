@@ -1,10 +1,11 @@
 package kata_test
 
 import (
+	"testing"
+
 	. "github.com/AlKoFDC/codewars/kata"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"testing"
 )
 
 var _ = Describe("FindUniq", func() {
