@@ -16,8 +16,8 @@ func FindUniq(arr []float32) float32 {
 	if result, ok := ifFirstAndSecondDifferent(testValue, arr[secondValue], arr[thirdValue]); ok {
 		return result
 	}
-
-	for idx := thirdValue; len(arr) > idx; idx++ {
+	length := len(arr)
+	for idx := thirdValue; length > idx; idx++ {
 		if value := arr[idx]; testValue != value {
 			return value
 		}
@@ -31,6 +31,9 @@ func ifFirstAndSecondDifferent(first, second, third float32) (float32, bool) {
 			return second, true
 		}
 		return first, true
+	}
+	if third != first {
+		return third, true
 	}
 	return first, false
 }
