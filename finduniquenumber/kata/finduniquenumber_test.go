@@ -40,7 +40,7 @@ func BenchmarkFindUniq(b *testing.B) {
 		equal     float32 = 0
 		different float32 = 2
 	)
-	in := []float32{}
+	var in []float32
 
 	in = append(in, equal)
 	in = append(in, equal)
