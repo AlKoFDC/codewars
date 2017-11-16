@@ -3,7 +3,7 @@ package kata_test
 import (
 	"testing"
 
-	. "github.com/AlKoFDC/codewars/kata"
+	. "github.com/AlKoFDC/codewars/finduniquenumber/kata"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
