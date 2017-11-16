@@ -8,6 +8,11 @@ import (
 	. "github.com/onsi/gomega"
 )
 
+func TestGingko(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "Find Unique Number")
+}
+
 var _ = Describe("FindUniq", func() {
 	It("should work for some basic cases", func() {
 		Expect(FindUniq([]float32{1.0, 1.0, 1.0, 2.0, 1.0, 1.0})).To(Equal(float32(2)))
