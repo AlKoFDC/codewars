@@ -50,33 +50,38 @@ var flipOnTape = map[rune]rune{
 }
 
 func skipLoop(commands []rune, pointer int) int {
-	var nested int
-	for pointer++; pointer < len(commands); pointer++ {
-		switch commands[pointer] {
-		case end:
-			if nested == 0 {
-				return pointer
-			}
-			nested--
-		case start:
-			nested++
-		}
-	}
-	return len(commands)
+	return findNext(commands, end, pointer, true)
 }
 
 func rewindLoop(commands []rune, pointer int) int {
+	return findNext(commands, start, pointer, false)
+}
+
+func findNext(
+	commands []rune,
+	lookFor rune,
+	pointer int,
+	forward bool,
+) int {
+	direction := -1
+	if forward {
+		direction = 1
+	}
+	opposite := end
+	if lookFor == end {
+		opposite = start
+	}
 	var nested int
-	for pointer--; pointer >= 0; pointer-- {
+	for pointer += direction; pointer >= 0 && pointer < len(commands); pointer += direction {
 		switch commands[pointer] {
-		case start:
+		case lookFor:
 			if nested == 0 {
 				return pointer
 			}
 			nested--
-		case end:
+		case opposite:
 			nested++
 		}
 	}
-	return -1
+	return map[int]int{1: len(commands), -1: -1}[direction]
 }
